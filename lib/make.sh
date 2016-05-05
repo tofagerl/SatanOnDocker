@@ -4,12 +4,7 @@ for FILE in /work/keymaps/*.c; do
   NAME="${FILENAME%.c}"
   NEWFILENAME="/work/firmware/${NAME}.hex"
   KEYMAPFILENAME="/tmk/keyboard/gh60/keymap_${FILENAME}"
-  echo "FILENAME: $FILENAME"
-  echo "NAME: $NAME"
-  echo "NEWFILENAME: $NEWFILENAME"
-  echo "KEYMAPFILENAME: $KEYMAPFILENAME"
   cp "$FILE" "$KEYMAPFILENAME"
-  cat "$KEYMAPFILENAME"
   cd /tmk/keyboard/gh60 && make "KEYMAP=$NAME" | ts >> "/work/logs/${NAME}-debug.log" 2>> "/work/logs/${NAME}-error.log"
   if test -f "$NEWFILENAME"; then
     mv "$NEWFILENAME" "${NEWFILENAME%.hex}-$(date +%Y.%m.%d-%H:%M:%S -r $NEWFILENAME).hex"

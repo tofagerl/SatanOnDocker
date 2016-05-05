@@ -8,7 +8,7 @@ MAINTAINER Tom Fagerland
 VOLUME /work
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install git gcc gcc-avr avr-libc make -y
+RUN apt-get install git gcc gcc-avr avr-libc make moreutils -y
 RUN git clone https://github.com/kairyu/tmk_keyboard_custom.git /tmk
 RUN git clone https://github.com/kairyu/tmk_core_custom /tmk/tmk_core_custom
 COPY lib/* /tmk/keyboard/gh60/
